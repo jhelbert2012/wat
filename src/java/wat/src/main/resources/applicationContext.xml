@@ -18,65 +18,19 @@
 
 	<context:property-placeholder location="classpath:application.properties"/>
 	
-	<context:component-scan base-package="com.easi8.web" />
+	<context:component-scan base-package="com.boszdigital.wat" />
 	
 	<tx:annotation-driven transaction-manager="txManager"/>
 	
-	<bean id="entityManagerFactory"  
-	      class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
-         <property name="persistenceUnitName" value="easi8web-persistence"/>  
-         <property name="dataSource" ref="dataSource" />  
-         <property name="jpaVendorAdapter">  
-             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">  
-                 <property name="databasePlatform" value="${database.target}"/>  
-                 <property name="showSql" value="${database.showSql}" />  
-                 <property name="generateDdl" value="${database.generateDdl}" />  
-             </bean>  
-         </property>  
-    </bean>  
-	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${database.driver}"/>
-        <property name="url" value="${database.url}"/>
-        <property name="username" value="${database.username}"/>
-        <property name="password" value="${database.password}"/>
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="url" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
     </bean>
 
 	<bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-    
-    <bean class="org.springframework.beans.factory.config.CustomScopeConfigurer">
-        <property name="scopes">
-            <map>
-                <entry key="view">
-                    <bean class="com.easi8.web.spring.ViewScope"/>
-                </entry>
-            </map>
-        </property>
-    </bean>
-
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
-	
-	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-	
-	<security:http auto-config="true">
-		<security:intercept-url pattern="/*" access="ROLE_CUSTOMER, ROLE_ADMIN, ROLE_VENDOR" />
-		<security:intercept-url pattern="/admin/**"	access="ROLE_VENDOR, ROLE_ADMIN" />
-		<security:intercept-url pattern="/css/*" filters="none" />
-		<security:intercept-url pattern="/images/*" filters="none" />
-		<security:intercept-url pattern="/javax.faces.resource/**" filters="none" />
-		<security:intercept-url pattern="/login.xhtml"	filters="none" />
-		<security:intercept-url pattern="/passwordRecovery.xhtml" filters="none" />
-		<security:intercept-url pattern="/signup.xhtml" filters="none" />
-		<security:logout logout-url="/logout"	logout-success-url="/" />
-		<security:form-login login-page="/login.xhtml" authentication-success-handler-ref="easi8AuthenticationSuccessHandler" />
-	</security:http>
-
-	<security:authentication-manager>
-		<security:authentication-provider user-service-ref="easi8UserDetailService">
-			<security:password-encoder hash="md5" />
-		</security:authentication-provider>
-	</security:authentication-manager>
-    
+        
 </beans>
