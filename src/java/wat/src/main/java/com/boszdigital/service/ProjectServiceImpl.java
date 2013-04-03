@@ -8,7 +8,7 @@ import com.boszdigital.wat.model.Project;
 
 
 @Service("createProject")
-public class CreatePojectImpl
+public class ProjectServiceImpl implements ProjectService
 {
 	@Autowired
 	ProjectDAO projectdao;
