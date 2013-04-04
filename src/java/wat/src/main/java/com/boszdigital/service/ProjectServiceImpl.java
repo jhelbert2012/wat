@@ -1,5 +1,7 @@
 package com.boszdigital.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,11 @@ public class ProjectServiceImpl implements ProjectService
 	public void createProject(final Project project)
 	{
 		projectdao.persist(project);
+	}
+
+	public List<Project> findAllProjects()
+	{
+		return projectdao.loadAll();
 	}
 
 }
