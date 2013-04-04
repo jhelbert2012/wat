@@ -15,6 +15,11 @@ public class ProjectServiceImpl implements ProjectService
 	@Autowired
 	ProjectDAO projectdao;
 
+	public ProjectServiceImpl()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
 	public void createProject(final Project project)
 	{
 		projectdao.persist(project);

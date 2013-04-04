@@ -16,7 +16,7 @@ public class ProjectsController
 	@Autowired
 	ProjectService projectService;
 
-	@RequestMapping(value = "/projects/", method = RequestMethod.GET)
+	@RequestMapping(value = "/projects", method = RequestMethod.GET)
 	public @ResponseBody
 	List<Project> getProjects()
 	{
