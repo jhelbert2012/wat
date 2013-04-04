@@ -1,4 +1,4 @@
-package com.boszdigital.service;
+package com.boszdigital.wat.service;
 
 import java.util.List;
 
