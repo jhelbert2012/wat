@@ -6,9 +6,9 @@
 *.ear
 
 *.pydevproject
-.project
+src/java/wat/.project
 .metadata
-bin/**
+src/java/wat/bin/**
 tmp/**
 tmp/**/*
 *.tmp
@@ -16,8 +16,8 @@ tmp/**/*
 *.swp
 *~.nib
 local.properties
-.classpath
-.settings/
+src/java/wat/.classpath
+src/java/wat/.settings/
 .loadpath
 
 # External tool builders
