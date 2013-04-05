@@ -15,4 +15,10 @@ public interface ProjectService
 
 	public List<Project> findAllProjects();
 
+	/**
+	 * Gets a project by its id
+	 * @param id The id of the project
+	 * @return Project data
+	 */
+	public Project getProject(long id);
 }

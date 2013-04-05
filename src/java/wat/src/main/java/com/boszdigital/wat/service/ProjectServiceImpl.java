@@ -30,4 +30,10 @@ public class ProjectServiceImpl implements ProjectService
 		return projectdao.loadAll();
 	}
 
+	@Override
+	public Project getProject(long id) {
+
+		return projectdao.loadById(id);
+	}
+
 }
